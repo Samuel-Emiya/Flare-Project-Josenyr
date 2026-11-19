@@ -1,0 +1,1 @@
+Coloque o que está na pasta banco no phpadmin, não é o banco que iremos usar, mas o site pede o banco para funcionar, então o modifiquem se necessário para a api
