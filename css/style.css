@@ -1,0 +1,403 @@
+/* =========================================
+   THAYARA POLIZEL – CONFEITARIA ARTESANAL
+   Stylesheet compartilhado
+   ========================================= */
+
+/* ── PALETA DE ARDÓSIA E CINZA ────────────── */
+:root{
+  --paleta-fundo: #dfe3e7;
+  --paleta-superficie: #f1f3f5;
+  --paleta-superficie-alt: #e5e9ed;
+  --paleta-cinza: darkgray;
+  --paleta-ardosia: lightslategrey;
+  --paleta-ardosia-escura: #4a5b6b;
+  --paleta-acao-hover: #26313b;
+  --paleta-navbar-hover: #26313b;
+  --paleta-link-hover: #e5e9ed;
+  --paleta-texto: #26313b;
+  --paleta-texto-suave: #5d6872;
+  --paleta-neutro-claro: #f1f3f5;
+  --paleta-sombra: rgba(38,49,59,.12);
+  --paleta-sombra-forte: rgba(38,49,59,.20);
+  --paleta-sombra-toast: rgba(38,49,59,.20);
+  --paleta-overlay-borda: rgba(241,243,245,.45);
+  --paleta-overlay-fundo: rgba(241,243,245,.14);
+  --radius: 12px;
+
+  --fundo:          var(--paleta-fundo);
+  --superficie:     var(--paleta-superficie);
+  --superficie-2:   var(--paleta-superficie-alt);
+  --texto:          var(--paleta-texto);
+  --texto-suave:    var(--paleta-texto-suave);
+  --titulo:         var(--paleta-ardosia-escura);
+  --destaque:       var(--paleta-ardosia-escura);
+  --destaque-texto: var(--paleta-neutro-claro);
+  --borda:          var(--paleta-cinza);
+  --sombra:         var(--paleta-sombra);
+  --sombra-forte:   var(--paleta-sombra-forte);
+  --navbar-bg:      var(--paleta-ardosia-escura);
+  --navbar-texto:   var(--paleta-neutro-claro);
+  --nav-link:       var(--paleta-neutro-claro);
+  --banner-1:       var(--paleta-cinza);
+  --banner-2:       var(--paleta-ardosia);
+  --banner-3:       var(--paleta-ardosia-escura);
+  --premium-bg:     var(--paleta-superficie-alt);
+  --premium-borda:  var(--paleta-cinza);
+  --premium-texto:  var(--paleta-ardosia-escura);
+}
+
+/* ── MODO ESCURO ──────────────────────────── */
+html[data-tema="escuro"]{
+  --paleta-fundo: #171d23;
+  --paleta-superficie: #222a31;
+  --paleta-superficie-alt: #2d3740;
+  --paleta-cinza: #52606b;
+  --paleta-ardosia: #465765;
+  --paleta-ardosia-escura: #344451;
+  --paleta-acao-hover: #465765;
+  --paleta-navbar-hover: #222a31;
+  --paleta-link-hover: #b8c2ca;
+  --paleta-texto: #e6ebef;
+  --paleta-texto-suave: #b8c2ca;
+  --paleta-neutro-claro: #f4f6f8;
+  --paleta-sombra: rgba(0,0,0,.45);
+  --paleta-sombra-forte: rgba(0,0,0,.60);
+  --paleta-sombra-toast: rgba(0,0,0,.20);
+}
+
+body, .card-produto, .guia-card, .painel-carrinho,
+.rodape, .navbar-thay, .card-categoria, .cat-label{
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; }
+}
+
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body{
+  margin:0;
+  font:15px/1.6 'Lato',sans-serif;
+  background:var(--fundo);
+  color:var(--texto);
+}
+
+/* ── NAVBAR ──────────────────────────────── */
+.navbar-thay .navbar-localizacao {
+    flex: 1;
+    text-align: center;
+    color: var(--navbar-texto);
+    font-size: 12px;
+    padding: 0 12px;
+    font-size: 14px;
+}
+
+.navbar-thay{
+  background:var(--navbar-bg);
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 2px 8px var(--sombra);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.navbar-thay .brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 0;
+  color:var(--navbar-texto);
+  text-decoration:none;
+  font:600 1.1rem 'Playfair Display',serif;
+}
+
+.navbar-thay .brand img{
+  height:38px;
+  object-fit:contain;
+}
+
+.navbar-thay .nav-links{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.navbar-thay .nav-links a{
+  display:block;
+  padding:10px 16px;
+  border-radius:8px;
+  color:var(--nav-link);
+  text-decoration:none;
+  text-transform:uppercase;
+  font:700 13px 'Lato',sans-serif;
+  transition:.25s;
+}
+
+.navbar-thay .nav-links a:hover,
+.navbar-thay .nav-links a.active{
+  background:var(--paleta-navbar-hover);
+  color:var(--destaque-texto);
+}
+
+.carrinho-link{
+  font-size:18px;
+  position:relative;
+}
+
+.badge-carrinho{
+  position:absolute;
+  top:4px;
+  right:4px;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:var(--destaque);
+  color:var(--destaque-texto);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:9px;
+  font-weight:700;
+}
+
+/* Hamburguer – mobile */
+.navbar-toggler-thay{
+  display:none;
+  padding:6px 10px;
+  border:2px solid var(--nav-link);
+  border-radius:8px;
+  background:none;
+  color:var(--nav-link);
+  font-size:18px;
+  cursor:pointer;
+}
+
+@media (max-width:768px){
+
+  .navbar-toggler-thay{ display:block; }
+
+  .navbar-thay{
+    position:relative;
+    flex-wrap:wrap;
+  }
+
+  .navbar-thay .nav-links{
+    display:none;
+    flex-direction:column;
+    position:absolute;
+    inset:100% 0 auto;
+    padding:12px;
+    background:var(--navbar-bg);
+    box-shadow:0 4px 12px var(--sombra);
+  }
+
+  .navbar-thay .nav-links.aberto{ display:flex; }
+
+  .navbar-thay .nav-links li,
+  .navbar-thay .nav-links a{
+    width:100%;
+    text-align:center;
+  }
+}
+
+/* ── TIPOGRAFIA ──────────────────────────── */
+h1,h2,h3{
+  color:var(--titulo);
+  font-family:'Playfair Display',serif;
+}
+
+h1{ font-size:clamp(1.8rem,4vw,2.6rem); }
+h2{ font-size:clamp(1.4rem,3vw,2rem); }
+
+.subtitulo{
+  margin-top:-8px;
+  color:var(--texto-suave);
+  font-size:14px;
+  letter-spacing:.04em;
+}
+
+.login-portal {
+  color: var(--texto);
+  text-decoration: none;
+}
+
+.menu-2 > .container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 4px 24px;
+}
+
+.menu-2 .btn-tema {
+  margin-left: auto;
+}
+
+/* ── BOTÕES ──────────────────────────────── */
+.btn-thay{
+  display:inline-block;
+  padding:10px 26px;
+  border:2px solid transparent;
+  border-radius:30px;
+  cursor:pointer;
+  text-decoration:none;
+  text-transform:uppercase;
+  font:700 13px 'Lato',sans-serif;
+  letter-spacing:.06em;
+  transition:.25s;
+}
+
+.btn-thay-primary{
+  background:var(--destaque);
+  border-color:var(--destaque);
+  color:var(--destaque-texto);
+}
+
+.btn-thay-primary:hover{
+  background:var(--paleta-acao-hover);
+  border-color:var(--paleta-acao-hover);
+}
+
+.btn-thay-outline{
+  background:transparent;
+  border-color:var(--borda);
+  color:var(--texto);
+}
+
+.btn-thay-outline:hover{
+  background:var(--superficie-2);
+  border-color:var(--paleta-acao-hover);
+}
+
+/* ── Principal ─────────────────────────── */
+.inicial {
+  display: flex;
+  flex-direction: row;
+  gap: 15rem;
+  background-color: var(--paleta-ardosia);
+  align-items: center;
+  justify-content: center;
+}
+
+.apresenta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+.assistente {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  background-color: var(--paleta-cinza);
+  border-top: 20rem var(--paleta-cinza) solid;
+  border-left: 10rem var(--paleta-cinza) solid;
+  border-right: 10rem var(--paleta-cinza) solid;
+  border-bottom: 2rem var(--paleta-cinza) solid;
+}
+
+/* ── SEÇÃO ───────────────────────────────── */
+.secao{ padding:60px 0; }
+
+.secao-titulo{
+  text-align:center;
+  margin-bottom:36px;
+}
+
+
+/* ── FEEDBACKS ───────────────────────────── */
+.feedback-img{
+  max-width:100%;
+  height:auto;
+  border-radius:12px;
+  box-shadow:0 4px 16px var(--sombra);
+}
+
+/* ── RODAPÉ ──────────────────────────────── */
+.rodape{
+  padding:36px 24px;
+  padding-bottom: 4.2rem;
+  text-align:center;
+  background:var(--destaque);
+  color:var(--destaque-texto);
+}
+
+.rodape a{
+  color:var(--destaque-texto);
+  text-decoration:none;
+  font-size:13px;
+}
+
+.rodape a:hover{ color:var(--paleta-link-hover); }
+
+.social-icons{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-bottom:12px;
+}
+
+.social-icons img{
+  width:32px;
+  height:32px;
+  filter:brightness(1.8) saturate(0);
+  transition:.25s;
+}
+
+.social-icons img:hover{ filter:none; }
+
+/* ── TOAST NOTIFICAÇÃO ───────────────────── */
+.toast-thay{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:9999;
+  padding:12px 20px;
+  border-radius:8px;
+  background:var(--destaque);
+  color:var(--destaque-texto);
+  font-size:13px;
+  font-weight:600;
+  box-shadow:0 4px 16px var(--paleta-sombra-toast);
+  transform:translateY(80px);
+  opacity:0;
+  transition:.3s;
+}
+
+.toast-thay.visivel{
+  transform:translateY(0);
+  opacity:1;
+}
+
+/* ── BOTÃO DE TEMA ────────────────────────── */
+.btn-tema{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px 12px;
+  border:1px solid var(--paleta-overlay-borda);
+  border-radius:30px;
+  background:transparent;
+  color:var(--navbar-texto);
+  cursor:pointer;
+  font:600 12px 'Lato',sans-serif;
+  line-height:1.6;
+  transition:.25s;
+}
+
+.btn-tema:hover{
+  background:var(--paleta-overlay-fundo);
+  border-color:var(--navbar-texto);
+}
+
+.btn-tema .icone-tema{ font-size:14px; }
